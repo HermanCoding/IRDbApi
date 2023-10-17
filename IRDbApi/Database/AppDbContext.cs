@@ -15,6 +15,8 @@ namespace IRDbApi.Database
 		{
 			base.OnModelCreating(modelBuilder);
 
+			modelBuilder.Entity<MovieModel>().Property(e => e.Rating).HasPrecision(2, 1);
+
 			modelBuilder.Entity<MovieModel>().HasData(
 			new MovieModel()
 			{
@@ -24,7 +26,7 @@ namespace IRDbApi.Database
 				Year = 1994,
 				Genre = "Drama",
 				Duration = 142,
-				Rating = 9.3
+				Rating = 9.3m
 			},
 			new MovieModel()
 			{
@@ -34,7 +36,7 @@ namespace IRDbApi.Database
 				Year = 1972,
 				Genre = "Crime, Drama",
 				Duration = 175,
-				Rating = 9.2
+				Rating = 9.2m
 			},
 			new MovieModel()
 			{
@@ -44,7 +46,7 @@ namespace IRDbApi.Database
 				Year = 2008,
 				Genre = "Action, Crime, Drama",
 				Duration = 152,
-				Rating = 9.0
+				Rating = 9.0m
 			},
 			new MovieModel()
 			{
@@ -54,7 +56,7 @@ namespace IRDbApi.Database
 				Year= 1994,
 				Genre = "Crime, Drama",
 				Duration = 154,
-				Rating = 8.9
+				Rating = 8.9m
 			},
 			new MovieModel()
 			{
@@ -64,7 +66,7 @@ namespace IRDbApi.Database
 				Year = 1999,
 				Genre = "Drama",
 				Duration = 139,
-				Rating = 8.8
+				Rating = 8.8m
 			},
 			new MovieModel()
 			{
@@ -74,7 +76,7 @@ namespace IRDbApi.Database
 				Year =1994,
 				Genre = "Drama, Romance",
 				Duration = 142,
-				Rating = 8.8
+				Rating = 8.8m
 			},
 			new MovieModel()
 			{
@@ -84,7 +86,7 @@ namespace IRDbApi.Database
 				Year = 2010,
 				Genre = "Action, Adventure, Sci-Fi",
 				Duration = 148,
-				Rating = 8.7
+				Rating = 8.7m
 			},
 			new MovieModel()
 			{
@@ -94,7 +96,7 @@ namespace IRDbApi.Database
 				Year = 1999,
 				Genre = "Action, Sci-Fi",
 				Duration = 136,
-				Rating = 8.7
+				Rating = 8.7m
 			},
 			new MovieModel()
 			{
@@ -104,7 +106,7 @@ namespace IRDbApi.Database
 				Year= 2014,
 				Genre = "Adventure, Drama, Sci-Fi",
 				Duration = 169,
-				Rating = 8.6
+				Rating = 8.6m
 			},
 			new MovieModel()
 			{
@@ -114,7 +116,7 @@ namespace IRDbApi.Database
 				Year = 2001,
 				Genre = "Adventure, Drama, Fantasy",
 				Duration = 178,
-				Rating = 8.8
+				Rating = 8.8m
 			});
 		}
 	}
