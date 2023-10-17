@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using IRDbApi.Database;
+using IRDbApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("IrDbConnection");
 // Add AppDbContext to DB-container
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+// To change reppository update to the new repository in the code below
+builder.Services.AddScoped<IMoviesRepository, MoviesRepository>();
 
 var app = builder.Build();
 
