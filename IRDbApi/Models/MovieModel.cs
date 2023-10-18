@@ -10,9 +10,9 @@ namespace IRDbApi.Models
 		// [RegularExpression(@"\S", ErrorMessage = "Movie title cannot be empty or contain only whitespace.")] // ToDo if AllowEmptyStrings = false dose not work as I think it dose.
 		public required string Title { get; set; }
 		public string? Director { get; set; }
-		public int Year { get; set; }
+		public int Year { get; set; } = 0;
 		public string? Genre { get; set; }
-		public int Duration { get; set; }
-		public decimal Rating { get; set; }
+		public int Duration { get; set; } = 0;
+		public decimal Rating { get; set; } = 0;
 	}
 }

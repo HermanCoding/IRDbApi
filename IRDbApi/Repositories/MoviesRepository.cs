@@ -1,5 +1,6 @@
 ﻿using IRDbApi.Database;
 using IRDbApi.Models;
+using System.Net;
 
 namespace IRDbApi.Repositories
 {
@@ -13,12 +14,12 @@ namespace IRDbApi.Repositories
 
 		public void DeleteMovieById(int id)
 		{
-			throw new NotImplementedException();
-		}
-
-		public void DeleteMovieByName(string title)
-		{
-			throw new NotImplementedException();
+			MovieModel movieToDelete = _context.Movies.FirstOrDefault(m => m.Id == id);
+			if (movieToDelete != null)
+			{
+				_context.Movies.Remove(movieToDelete);
+				_context.SaveChanges();
+			}
 		}
 
 		public IEnumerable<MovieModel> GetAllMovies()
@@ -28,7 +29,7 @@ namespace IRDbApi.Repositories
 
 		public MovieModel GetMovieById(int id)
 		{
-			throw new NotImplementedException();
+			return _context.Movies.FirstOrDefault(m => m.Id == id);
 		}
 
 		public MovieModel GetMovieByName(string title)
@@ -38,12 +39,24 @@ namespace IRDbApi.Repositories
 
 		public void PostMovie(MovieModel movie)
 		{
-			throw new NotImplementedException();
+			_context.Movies.Add(movie);
+			_context.SaveChanges();
 		}
 
 		public void UpdateMovie(int id, MovieModel movie)
 		{
-			throw new NotImplementedException();
-		}
+			MovieModel movieToUpdate = _context.Movies.FirstOrDefault(m =>m.Id == id);
+
+            if (movieToUpdate != null)
+			{
+				movieToUpdate.Title = movie.Title;
+				movieToUpdate.Director = movie.Director;
+				movieToUpdate.Year = movie.Year;
+				movieToUpdate.Genre = movie.Genre;
+				movieToUpdate.Duration = movie.Duration;
+				movieToUpdate.Rating = movie.Rating;
+				_context.SaveChanges();
+			}
+        }
 	}
 }

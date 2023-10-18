@@ -14,6 +14,5 @@ namespace IRDbApi.Repositories
 		public void UpdateMovie(int id, MovieModel movie);
 
 		public void DeleteMovieById(int id);
-		public void DeleteMovieByName(string title);
 	}
 }
