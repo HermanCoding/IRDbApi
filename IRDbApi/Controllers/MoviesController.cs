@@ -18,7 +18,7 @@ namespace IRDbApi.Controllers
 		// Add a new movie to the database
 		// TODO Fixa så att id uppdateras utan att man väljer id eller 0
 		[HttpPost]
-		public void Post([FromForm] MovieModel movieToAdd)
+		public void Post([FromBody] MovieModel movieToAdd)
 		{
 			_repo.PostMovie(movieToAdd);
 		}

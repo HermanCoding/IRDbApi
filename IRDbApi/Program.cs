@@ -19,6 +19,15 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
 // To change reppository update to the new repository in the code below
 builder.Services.AddScoped<IMoviesRepository, MoviesRepository>();
 
+// Not a safe way to give access
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy(name: "AllowAll", policy =>
+	{
+		policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+	});
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,6 +36,8 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
